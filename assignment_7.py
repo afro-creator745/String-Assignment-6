@@ -1,9 +1,9 @@
 """
 COMP 163 - Introduction to Programming
 Assignment: Chapter 7 - Course Schedule Formatter
-Name: [Your Full Name]
-GitHub Username: [Your Username]
-Date: [Submission Date]
+Name: Hakeem Cole
+GitHub Username: afro-creator745
+Date: 2/27/2025
 Description: [What your program does]
 AI Usage: [Describe any AI assistance OR write "None"]
 """
