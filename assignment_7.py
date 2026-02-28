@@ -39,12 +39,71 @@ while line != "DONE":
 # ============================================================
 # Step 3: Day Code Expansion
 # ============================================================
+    day_map_full = {
+        "M": "Monday",
+        "T": "Tuesday",
+        "W": "Wednesday",
+        "R": "Thursday",
+        "F": "Friday"
+    }
+    day_map_abbrev = {
+        "M": "Mon",
+        "T": "Tue",
+        "W": "Wed",
+        "R": "Thu",
+        "F": "Fri"
+    }
 
+    days_upper = days_raw.upper()  # Makes "mw" and "MW" behave the same
+    day_letters = []
+    full_days_list = []
+    abbrev_days_list = []
+
+    for ch in days_upper:
+        if ch in day_map_full:
+            day_letters.append(ch)
+            full_days_list.append(day_map_full[ch])
+            abbrev_days_list.append(day_map_abbrev[ch])
+
+    days_full = "/".join(full_days_list)
+    days_abbrev = "/".join(abbrev_days_list)
 
 # ============================================================
 # Step 4: Time Standardization
 # ============================================================
+    t = time_raw.replace(" ", "")          # remove unwanted spaces
+    t_lower = t.lower()                   # normalize for consistent am/pm checking
+    ampm = t_lower[-2:].upper()           # "am"/"pm" -> "AM"/"PM"
+    clock = t[:-2]                        # keep "9:00" or "11:30"
+    time_clean = clock + " " + ampm
 
+    courses.append({
+        "code": code_clean,
+        "title": title_clean,
+        "days_full": days_full,
+        "days_abbrev": days_abbrev,
+        "time": time_clean,
+        "room": room_clean,
+        "day_letters": day_letters
+    })
+
+    course_num += 1
+    line = input("Enter course data:")
+   
+# Print the detailed schedule blocks
+print("=== AGGIE COURSE SCHEDULE ===\n")
+
+for i in range(len(courses)):
+    c = courses[i]
+    print(f"COURSE {i+1}:\n")
+    print(f"  Code:  {c['code']}\n")
+    print(f"  Title: {c['title']}\n")
+    print(f"  Days:  {c['days_full']}\n")
+    print(f"  Time:  {c['time']}\n")
+    print(f"  Room:  {c['room']}\n")
+
+print("=== SCHEDULE SUMMARY ===")
+print(f"Total courses: {len(courses)}\n")
 
 # ============================================================
 # Step 5: Conflict Detection
