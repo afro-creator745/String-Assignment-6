@@ -4,8 +4,9 @@ Assignment: Chapter 7 - Course Schedule Formatter
 Name: Hakeem Cole
 GitHub Username: afro-creator745
 Date: 2/27/2025
-Description: [What your program does]
-AI Usage: [Describe any AI assistance OR write "None"]
+Description: Reads input course data, cleans each field using string methods,
+             prints a detailed schedule, detects time/day conflicts, and prints an aligned summary.
+AI Usage: AI assited with debugging code and some formatting issues
 """
 
 # ============================================================
@@ -96,10 +97,10 @@ print("=== AGGIE COURSE SCHEDULE ===\n")
 for i in range(len(courses)):
     c = courses[i]
     print(f"COURSE {i+1}:\n")
-    print(f"  Code:  {c['code']}\n")
-    print(f"  Title: {c['title']}\n")
-    print(f"  Days:  {c['days_full']}\n")
-    print(f"  Time:  {c['time']}\n")
+    print(f"  Code:  {c['code']}")
+    print(f"  Title: {c['title']}")
+    print(f"  Days:  {c['days_full']}")
+    print(f"  Time:  {c['time']}")
     print(f"  Room:  {c['room']}\n")
 
 print("=== SCHEDULE SUMMARY ===")
