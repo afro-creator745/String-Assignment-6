@@ -59,6 +59,35 @@ for idx in course_dictionary:
 # ============================================================
 # Step 2: Title and Room Formatting
 # ============================================================
+course_title = current_course[1]
+    course_title_clean = course_title.lower().title()
+    print("  Title:", course_title_clean)
+    print()
+
+    room = current_course[4]
+    room_clean = room.lower().title()
+    print("  Room:", room_clean)
+    print()
+
+    # ============================================================
+    # Step 3: Day Code Expansion
+    # ============================================================
+    days_raw = current_course[2].upper().replace(" ", "")
+    full_days = []
+    abbr_days = []
+    day_codes = set()
+
+    for ch in days_raw:
+        if ch in day_full:
+            full_days.append(day_full[ch])
+            abbr_days.append(day_abbr[ch])
+            day_codes.add(ch)
+
+    days_full_text = "/".join(full_days)
+    days_abbr_text = "/".join(abbr_days)
+
+    print("  Days:", days_full_text)
+    print()
 
 
 # ============================================================
