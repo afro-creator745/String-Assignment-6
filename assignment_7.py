@@ -108,8 +108,45 @@ print(f"Total courses: {len(courses)}\n")
 # ============================================================
 # Step 5: Conflict Detection
 # ============================================================
+print("=== CONFLICT REPORT ===")
+
+order = ["M", "T", "W", "R", "F"]
+conflicts_found = False
+
+for i in range(len(courses)):
+    for j in range(i + 1, len(courses)):
+        c1 = courses[i]
+        c2 = courses[j]
+
+        # Same meeting time is required for a conflict
+        if c1["time"] == c2["time"]:
+            s1 = set(c1["day_letters"])
+            s2 = set(c2["day_letters"])
+
+            shared_letters = []
+            for d in order:
+                if d in s1 and d in s2:
+                    shared_letters.append(d)
+
+            if len(shared_letters) > 0:
+                # Convert shared day letters to full names in correct order
+                shared_full_names = []
+                for d in shared_letters:
+                    shared_full_names.append(day_map_full[d])
+
+                day_text = ", ".join(shared_full_names)
+                print(f"{c1['code']} and {c2['code']} conflict on {day_text} at {c1['time']}")
+                conflicts_found = True
+
+if not conflicts_found:
+    print("No conflicts detected.")
+
+print("\n=== FORMATTED FOR PRINTING ===")
 
 
 # ============================================================
 # Step 6: Full Output & Formatted Printing
 # ============================================================
+for c in courses:
+    line_out = f"{c['code']:<10}{c['title']:<26}{c['days_abbrev']:<13}{c['time']:<11}{c['room']}"
+    print(line_out)
