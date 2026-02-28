@@ -130,7 +130,7 @@ The days field requires you to process the string one character at a time rather
 than treating it as a whole. Why is that necessary? Could you have produced the
 same result with a single string method call instead of a loop? Explain your reasoning.
 
-*Your answer here.*
+It's required to treat it one character at a time because of the users input. Each letter in the input corresponding to days has a different value output thus you can't evalaute it as one big string. Other than a loop you coould use the method .replace(), can then clean up the ouput since you could set the method to replace the letters of the day to the whole word of the day it corresponds to. 
 
 ---
 
@@ -141,7 +141,7 @@ How did you identify where one part ends and the other begins in your program?
 What would break in your solution if the input format changed — for example,
 if times were given as `9am` instead of `9:00am`?
 
-*Your answer here.*
+I identified the split point using string slicing [-2:]. The logic would brakc if the input was 9am instead of 9:00 am since my code retrives the data number 9 and the time period of am or pm. It would however ruin the formating and only output the single digit and not a full time stamp such as 9:00 instead it would print just 9 with the coreesponding time period of either am or pm.
 
 ---
 
@@ -152,7 +152,7 @@ all input has been collected. Why can't you check for conflicts as each course
 is entered, before the user types DONE? What data structure did you use to store
 the courses, and why was that a good choice for this comparison?
 
-*Your answer here.*
+You must wait until all input is collected because conflict detection requires comparing every course against every other course. Printing conflicts while the user is still entering data would mess up the required output order. I used dictionaries to store the course inputs. The dictionary persvers the order of the inputs and it allows you access every aspect of the input.
 
 ---
 
@@ -162,10 +162,10 @@ What is the difference between *cleaning* data and *formatting* data?
 Give one specific example of each from your own program and explain
 why the distinction matters.
 
-*Your answer here.*
-
+Cleaning converts (using .upper()) inputs such as "cs 163" to "CS 163" the proper format. While formating deals with the reqiured spacing and columns
+f"{code:<10}{title:<26}{days:<13}{time:<11}{room}" is a form of formatting. 
 ---
 
 ## AI Usage
 
-Describe any AI assistance you used, or write "None."
+AI assited me with debugging and assuring that I spaced and formatted properly 
